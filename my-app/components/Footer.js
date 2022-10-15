@@ -1,9 +1,17 @@
 import React from 'react'
 import styles from '../styles/Footer.module.css'
-const Footer = () => {
+import Link from 'next/link'
+const Footer = ({users}) => {
     return (
         <div>
-            <h1 className={styles.title}>Footer</h1>
+            <ul>
+                <li>
+                    <Link href='/'>Home</Link>
+                </li>
+                <li>
+                    <Link href='/about'>About</Link>
+                </li>
+            </ul>
         </div>
     )
 }

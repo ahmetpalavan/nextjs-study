@@ -1,7 +1,9 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
 
-export default function Home() {
+export default function Home({users}) {
+  const router = useRouter()
   const number = 3
   return (
     <div className={styles.container}>
@@ -16,8 +18,23 @@ export default function Home() {
           color: yellow;
           display: ${number > 2 ? 'block' : 'none'};
         }
-      `
-      }</style>
-    </div>
-  )
+      `}</style>
+      <h1>Homepage</h1>
+      <h2>User List</h2>
+      {users.map((user)=>(
+        <div key={user.id} onClick={()=>router.push(`user/${user.id}`)} style={{cursor:'pointer'}}>
+          <h3 style={{color:'green'}}>{user.id}-{user.name}</h3>
+        </div>
+      ))}
+        </div>
+)}
+
+export const getStaticProps = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users')
+  const users = await res.json()
+  return {
+    props: {
+      users
+    }
+  }
 }
