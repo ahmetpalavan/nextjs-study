@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import styles from '../styles/Home.module.css'
-
+import Image from 'next/image'
 export default function Home({users}) {
   const router = useRouter()
   const number = 3
@@ -26,6 +26,7 @@ export default function Home({users}) {
           <h3 style={{color:'green'}}>{user.id}-{user.name}</h3>
         </div>
       ))}
+      <Image src='https://images.unsplash.com/photo-1665686310934-8fab52b3821b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60' height={300} width={300}/>
         </div>
 )}
 
